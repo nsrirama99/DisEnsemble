@@ -16,6 +16,13 @@
 		2E704F5A2761865800F313FB /* DisEnsembleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F592761865800F313FB /* DisEnsembleTests.swift */; };
 		2E704F642761865800F313FB /* DisEnsembleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F632761865800F313FB /* DisEnsembleUITests.swift */; };
 		2E704F662761865800F313FB /* DisEnsembleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F652761865800F313FB /* DisEnsembleUITestsLaunchTests.swift */; };
+		2E704F80276187F700F313FB /* AudioFileReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F73276187F600F313FB /* AudioFileReader.mm */; };
+		2E704F81276187F700F313FB /* AudioFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F74276187F600F313FB /* AudioFileWriter.m */; };
+		2E704F82276187F700F313FB /* AudioFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F75276187F600F313FB /* AudioFileReader.m */; };
+		2E704F83276187F700F313FB /* DataBufferBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F79276187F600F313FB /* DataBufferBlock.m */; };
+		2E704F84276187F700F313FB /* Novocaine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7A276187F600F313FB /* Novocaine.m */; };
+		2E704F85276187F700F313FB /* CircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7C276187F700F313FB /* CircularBuffer.m */; };
+		2E704F86276187F700F313FB /* FFTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7D276187F700F313FB /* FFTHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,20 @@
 		2E704F5F2761865800F313FB /* DisEnsembleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisEnsembleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E704F632761865800F313FB /* DisEnsembleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisEnsembleUITests.swift; sourceTree = "<group>"; };
 		2E704F652761865800F313FB /* DisEnsembleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisEnsembleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2E704F72276187F500F313FB /* DisEnsemble-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DisEnsemble-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E704F73276187F600F313FB /* AudioFileReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AudioFileReader.mm; path = AudioDSPUtils/AudioFileReader.mm; sourceTree = "<group>"; };
+		2E704F74276187F600F313FB /* AudioFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFileWriter.m; path = AudioDSPUtils/AudioFileWriter.m; sourceTree = "<group>"; };
+		2E704F75276187F600F313FB /* AudioFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFileReader.m; path = AudioDSPUtils/AudioFileReader.m; sourceTree = "<group>"; };
+		2E704F76276187F600F313FB /* AudioFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFileWriter.h; path = AudioDSPUtils/AudioFileWriter.h; sourceTree = "<group>"; };
+		2E704F77276187F600F313FB /* Novocaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Novocaine.h; path = AudioDSPUtils/Novocaine.h; sourceTree = "<group>"; };
+		2E704F78276187F600F313FB /* FFTHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFTHelper.h; path = AudioDSPUtils/FFTHelper.h; sourceTree = "<group>"; };
+		2E704F79276187F600F313FB /* DataBufferBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataBufferBlock.m; path = AudioDSPUtils/DataBufferBlock.m; sourceTree = "<group>"; };
+		2E704F7A276187F600F313FB /* Novocaine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Novocaine.m; path = AudioDSPUtils/Novocaine.m; sourceTree = "<group>"; };
+		2E704F7B276187F600F313FB /* DataBufferBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataBufferBlock.h; path = AudioDSPUtils/DataBufferBlock.h; sourceTree = "<group>"; };
+		2E704F7C276187F700F313FB /* CircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircularBuffer.m; path = AudioDSPUtils/CircularBuffer.m; sourceTree = "<group>"; };
+		2E704F7D276187F700F313FB /* FFTHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFTHelper.m; path = AudioDSPUtils/FFTHelper.m; sourceTree = "<group>"; };
+		2E704F7E276187F700F313FB /* AudioFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFileReader.h; path = AudioDSPUtils/AudioFileReader.h; sourceTree = "<group>"; };
+		2E704F7F276187F700F313FB /* CircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircularBuffer.h; path = AudioDSPUtils/CircularBuffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +100,24 @@
 		2E704F362761865200F313FB = {
 			isa = PBXGroup;
 			children = (
+				2E704F7E276187F700F313FB /* AudioFileReader.h */,
+				2E704F75276187F600F313FB /* AudioFileReader.m */,
+				2E704F73276187F600F313FB /* AudioFileReader.mm */,
+				2E704F76276187F600F313FB /* AudioFileWriter.h */,
+				2E704F74276187F600F313FB /* AudioFileWriter.m */,
+				2E704F7F276187F700F313FB /* CircularBuffer.h */,
+				2E704F7C276187F700F313FB /* CircularBuffer.m */,
+				2E704F7B276187F600F313FB /* DataBufferBlock.h */,
+				2E704F79276187F600F313FB /* DataBufferBlock.m */,
+				2E704F78276187F600F313FB /* FFTHelper.h */,
+				2E704F7D276187F700F313FB /* FFTHelper.m */,
+				2E704F77276187F600F313FB /* Novocaine.h */,
+				2E704F7A276187F600F313FB /* Novocaine.m */,
 				2E704F412761865200F313FB /* DisEnsemble */,
 				2E704F582761865800F313FB /* DisEnsembleTests */,
 				2E704F622761865800F313FB /* DisEnsembleUITests */,
 				2E704F402761865200F313FB /* Products */,
+				2E704F72276187F500F313FB /* DisEnsemble-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,6 +230,7 @@
 				TargetAttributes = {
 					2E704F3E2761865200F313FB = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 					};
 					2E704F542761865800F313FB = {
 						CreatedOnToolsVersion = 13.1;
@@ -258,9 +294,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E704F85276187F700F313FB /* CircularBuffer.m in Sources */,
+				2E704F84276187F700F313FB /* Novocaine.m in Sources */,
 				2E704F472761865200F313FB /* ViewController.swift in Sources */,
+				2E704F82276187F700F313FB /* AudioFileReader.m in Sources */,
 				2E704F432761865200F313FB /* AppDelegate.swift in Sources */,
+				2E704F81276187F700F313FB /* AudioFileWriter.m in Sources */,
+				2E704F83276187F700F313FB /* DataBufferBlock.m in Sources */,
 				2E704F452761865200F313FB /* SceneDelegate.swift in Sources */,
+				2E704F86276187F700F313FB /* FFTHelper.m in Sources */,
+				2E704F80276187F700F313FB /* AudioFileReader.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F69WJ27LN4;
@@ -455,6 +499,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.DisEnsemble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DisEnsemble-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -465,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F69WJ27LN4;
@@ -483,6 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.DisEnsemble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DisEnsemble-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
