@@ -23,6 +23,8 @@
 		2E704F84276187F700F313FB /* Novocaine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7A276187F600F313FB /* Novocaine.m */; };
 		2E704F85276187F700F313FB /* CircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7C276187F700F313FB /* CircularBuffer.m */; };
 		2E704F86276187F700F313FB /* FFTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7D276187F700F313FB /* FFTHelper.m */; };
+		2E704F882761887D00F313FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F872761887D00F313FB /* ResultsViewController.swift */; };
+		2E704F8A2761889600F313FB /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F892761889600F313FB /* ModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		2E704F7D276187F700F313FB /* FFTHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFTHelper.m; path = AudioDSPUtils/FFTHelper.m; sourceTree = "<group>"; };
 		2E704F7E276187F700F313FB /* AudioFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioFileReader.h; path = AudioDSPUtils/AudioFileReader.h; sourceTree = "<group>"; };
 		2E704F7F276187F700F313FB /* CircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircularBuffer.h; path = AudioDSPUtils/CircularBuffer.h; sourceTree = "<group>"; };
+		2E704F872761887D00F313FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		2E704F892761889600F313FB /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 				2E704F422761865200F313FB /* AppDelegate.swift */,
 				2E704F442761865200F313FB /* SceneDelegate.swift */,
 				2E704F462761865200F313FB /* ViewController.swift */,
+				2E704F872761887D00F313FB /* ResultsViewController.swift */,
+				2E704F892761889600F313FB /* ModalViewController.swift */,
 				2E704F482761865200F313FB /* Main.storyboard */,
 				2E704F4B2761865800F313FB /* Assets.xcassets */,
 				2E704F4D2761865800F313FB /* LaunchScreen.storyboard */,
@@ -294,9 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E704F882761887D00F313FB /* ResultsViewController.swift in Sources */,
 				2E704F85276187F700F313FB /* CircularBuffer.m in Sources */,
 				2E704F84276187F700F313FB /* Novocaine.m in Sources */,
 				2E704F472761865200F313FB /* ViewController.swift in Sources */,
+				2E704F8A2761889600F313FB /* ModalViewController.swift in Sources */,
 				2E704F82276187F700F313FB /* AudioFileReader.m in Sources */,
 				2E704F432761865200F313FB /* AppDelegate.swift in Sources */,
 				2E704F81276187F700F313FB /* AudioFileWriter.m in Sources */,
