@@ -8,9 +8,6 @@
 #import "DataModel.h"
 
 @implementation DataModel
-//@synthesize charNames = _charNames;
-//@synthesize stageNames = _stageNames;
-//@synthesize musicNames = _musicNames;
 
 @synthesize instrumentNames = _instrumentNames;
 
@@ -24,29 +21,7 @@
     return _sharedInstance;
 }
 
-//
-//Array Getters
-//
-//-(NSArray*)charNames {
-//    if(!_charNames) {
-//        [self loadNames];
-//    }
-//    return _charNames;
-//}
-//
-//-(NSArray*)stageNames {
-//    if(!_stageNames) {
-//        [self loadNames];
-//    }
-//    return _stageNames;
-//}
-//
-//-(NSArray*)musicNames {
-//    if(!_musicNames) {
-//        [self loadNames];
-//    }
-//    return _musicNames;
-//}
+
 -(NSArray*)instrumentNames {
     if(!_instrumentNames) {
         [self loadNames];
@@ -62,11 +37,8 @@
 //    _charNames = [fileDict objectForKey:@"Characters"];
 //    _stageNames = [fileDict objectForKey:@"Stages"];
 //    _musicNames = [fileDict objectForKey:@"Music"];
-//
+
     _instrumentNames = [fileDict objectForKey:@"Instruments"];
-    
-    
-    
     
     return 1;
 }
@@ -74,13 +46,13 @@
 -(UIImage*)getImageWithName:(NSString*)name {
     UIImage* image = nil;
     
-    
     image = [UIImage imageNamed:name];
     
     return image;
 }
 
 -(NSArray*)getAllInstruments {
+    //[self loadNames];
     return _instrumentNames;
 }
 

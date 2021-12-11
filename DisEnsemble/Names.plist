@@ -5,6 +5,15 @@
 	<key>Instruments</key>
 	<array>
 		<string>piano</string>
+		<string>singing</string>
+		<string>guitar</string>
+		<string>saxophone</string>
+		<string>flute</string>
+		<string>clarinet</string>
+		<string>drums</string>
+		<string>violin</string>
+		<string>cello</string>
+		<string>trumpet</string>
 	</array>
 </dict>
 </plist>

@@ -17,17 +17,18 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
     var row = 0
     
 
-
+    @IBOutlet weak var image: UIImageView!
+    
     
     lazy var dataModel = {
         return DataModel.sharedInstance()
     }()
     
-    let pickerData = ["one", "two" , "three"]
+    var pickerData:[Any] = []// = ["piano"]//["one", "two" , "three"]
     
-    lazy private var imageView: UIImageView? = {
-        return UIImageView.init(image: self.dataModel.getImageWithName(displayImageName))
-    }()
+//    lazy private var imageView: UIImageView? = {
+//        return UIImageView.init(image: self.dataModel.getImageWithName(displayImageName))
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
         self.instrumentPicker.dataSource = self
         
         instrumentPicker.selectRow(row, inComponent: 0, animated: false)
+        self.image.image = self.dataModel.getImageWithName(pickerData[0] as! String)
     }
     
 
@@ -55,9 +57,14 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(pickerData[0])
+        //print(pickerData[0])
         if let name = pickerData[row] as? String {
-            imageView?.image? = self.dataModel.getImageWithName(name)
+            image.image = self.dataModel.getImageWithName(name)
+            //imageView?.image? = self.dataModel.getImageWithName(name)
         }
+    }
+    
+    @IBAction func dismissView(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

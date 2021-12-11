@@ -34,9 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)getInstrumentNameForIndex:(NSInteger)index;
 
 
-@property (nonatomic, strong) NSArray* charNames;
-@property (nonatomic, strong) NSArray* stageNames;
-@property (nonatomic, strong) NSArray* musicNames;
 @property (nonatomic, strong) NSArray* instrumentNames;
 
 @end

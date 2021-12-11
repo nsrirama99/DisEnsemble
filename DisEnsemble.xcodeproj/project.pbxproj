@@ -24,6 +24,7 @@
 		2E704F86276187F700F313FB /* FFTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F7D276187F700F313FB /* FFTHelper.m */; };
 		2E704F882761887D00F313FB /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F872761887D00F313FB /* ResultsViewController.swift */; };
 		2E704F8A2761889600F313FB /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F892761889600F313FB /* ModalViewController.swift */; };
+		2E704F8E2764816400F313FB /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F8D2764816400F313FB /* AudioModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		2E704F7F276187F700F313FB /* CircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircularBuffer.h; path = AudioDSPUtils/CircularBuffer.h; sourceTree = "<group>"; };
 		2E704F872761887D00F313FB /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		2E704F892761889600F313FB /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		2E704F8D2764816400F313FB /* AudioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		2E704F412761865200F313FB /* DisEnsemble */ = {
 			isa = PBXGroup;
 			children = (
+				2E704F8D2764816400F313FB /* AudioModel.swift */,
 				2E704F422761865200F313FB /* AppDelegate.swift */,
 				2E704F442761865200F313FB /* SceneDelegate.swift */,
 				2E704F462761865200F313FB /* ViewController.swift */,
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E704F8E2764816400F313FB /* AudioModel.swift in Sources */,
 				2E704F882761887D00F313FB /* ResultsViewController.swift in Sources */,
 				1E180C69276435EC00642045 /* DataModel.m in Sources */,
 				2E704F85276187F700F313FB /* CircularBuffer.m in Sources */,
@@ -485,7 +489,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PH8Q4RRFW;
+				DEVELOPMENT_TEAM = F69WJ27LN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DisEnsemble/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -493,6 +497,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +521,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PH8Q4RRFW;
+				DEVELOPMENT_TEAM = F69WJ27LN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DisEnsemble/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -524,6 +529,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
