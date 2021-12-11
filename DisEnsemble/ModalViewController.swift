@@ -7,8 +7,12 @@
 
 import UIKit
 
+
+
 class ModalViewController: UIViewController {
 
+    @IBOutlet weak var popUpText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +20,13 @@ class ModalViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func sendData(_ sender: Any) {
+        var data = true
+        
+        if(data == true){
+            popUpText.text = "Data Recieved and Processed. Swipe down to return to menu."
+        }
     }
-    */
+    
 
 }

@@ -15,5 +15,15 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func modalView(_ sender: Any) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            let viewControllerModal = self.storyboard?.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+            
+            self.present(viewControllerModal,animated: true, completion: nil)
+        }
+        
+        
+    }
 }
 
