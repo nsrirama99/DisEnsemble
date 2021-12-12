@@ -46,11 +46,23 @@ class AudioModel {
         }
     }
     
-    func startProcessingAudioForPlayback(withFreq:Float=330.0) {
-        sineFrequency = withFreq
-        self.audioManager?.setOutputBlockToPlayAudio(sineFrequency)
+    func startProcessingAudioForPlayback(audio:[Float]) {
+        let pointerToFloats = UnsafeMutablePointer<Float>.allocate(capacity: audio.count)
+
+        // Copying our data into the freshly allocated memory
+        pointerToFloats.assign(from: audio, count: audio.count)
+        
+        self.audioManager?.setOutputBlockToPlayAudio(pointerToFloats)
     }
     
+    func startProcessingSinewaveForPlayback(withFreq:Float=330.0){
+            sineFrequency = withFreq
+            // Two examples are given that use either objective c or that use swift
+            //   the swift code for loop is slightly slower thatn doing this in c,
+            //   but the implementations are very similar
+            //self.audioManager?.outputBlock = self.handleSpeakerQueryWithSinusoid // swift for loop
+            self.audioManager?.setOutputBlockToPlaySineWave(sineFrequency) // c for loop
+        }
     
     // You must call this when you want the audio to start being handled by our model
     func play(){

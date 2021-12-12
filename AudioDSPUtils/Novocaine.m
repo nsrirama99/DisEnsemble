@@ -210,7 +210,7 @@ static pthread_mutex_t outputAudioFileLock;
      }];
 }
 
--(void)setOutputBlockToPlayAudio:(float [])fftData{
+-(void)setOutputBlockToPlayAudio:(float [])rawData{
     //self.sineFrequency = frequency;
     __block float phase = 0.0;
     //double sineWaveRepeatMax = 2*M_PI;
@@ -221,7 +221,7 @@ static pthread_mutex_t outputAudioFileLock;
         if(numChannels == 1){
             for (int i=0; i < numFrames; ++i)
             {
-                data[i] = fftData[i];
+                data[i] = rawData[i];
                 
 //                phase += weakSelf.phaseIncrement;
 //                if (phase >= sineWaveRepeatMax) phase -= sineWaveRepeatMax;
@@ -229,7 +229,7 @@ static pthread_mutex_t outputAudioFileLock;
         }else if(numChannels==2){
             for (int i=0; i < numFrames*numChannels; i+=2)
             {
-                data[i] = fftData[i];
+                data[i] = rawData[i];
                 data[i+1] = data[i];
                 
 //                phase += weakSelf.phaseIncrement;

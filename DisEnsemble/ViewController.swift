@@ -162,7 +162,7 @@ class ViewController: UIViewController, ModalDelegate {
             runAudioFlag = true
             recordButton.setTitle("Stop Recording", for: .normal)
             //if not currently recording, record audio and set up auto-cutoff at 10 seconds
-            audio.startMicrophoneProcessing(withFps: 10)
+            audio.startMicrophoneProcessing(withFps: 20)
             audio.play()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10000), execute: {

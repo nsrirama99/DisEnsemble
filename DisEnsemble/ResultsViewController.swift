@@ -34,9 +34,6 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        audio.startProcessingAudioForPlayback()
-        audio.play()
 
         self.instrumentPicker.delegate = self
         self.instrumentPicker.dataSource = self
@@ -77,8 +74,6 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
     }
     
     @IBAction func dismissView(_ sender: Any) {
-        audio.endAudioProcessing()
         dismiss(animated: true, completion: nil)
-        
     }
 }

@@ -17,11 +17,13 @@ class ModalViewController: UIViewController {
     var fftData:[Float] = []
     var timeData:[Float] = []
     
+    var bufferSize = 441000
+    let audio = AudioModel(buffer_size: 441000)
+    
     @IBOutlet weak var popUpText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -31,6 +33,7 @@ class ModalViewController: UIViewController {
     }
     
     @IBAction func cancelAudio(_ sender: Any) {
+        audio.endAudioProcessing()
         dismiss(animated: true, completion: nil)
     }
     
@@ -44,6 +47,12 @@ class ModalViewController: UIViewController {
         //print(timeData[0..<110])
         //print(timeData[timeData.count-100..<timeData.count])
         //print(fftData[fftData.count-100..<fftData.count])
+        
+        //audio.startProcessingSinewaveForPlayback()
+        
+        
+        audio.startProcessingAudioForPlayback(audio: self.timeData)
+        audio.play()
     }
     
     @IBAction func sendData(_ sender: Any) {
@@ -58,6 +67,7 @@ class ModalViewController: UIViewController {
             delegate.processAudio()
             //delegate.startDisensemble()
         }
+        audio.endAudioProcessing()
         dismiss(animated: true, completion: nil)
     }
     
