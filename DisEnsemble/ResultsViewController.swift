@@ -7,9 +7,11 @@
 
 import UIKit
 
-
+let AUDIO_BUFFER_SIZE = 1024*4
 
 class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let audio = AudioModel(buffer_size: AUDIO_BUFFER_SIZE)
     
     @IBOutlet weak var instrumentPicker: UIPickerView!
     
@@ -24,7 +26,7 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
         return DataModel.sharedInstance()
     }()
     
-    var pickerData:[Any] = []// = ["piano"]//["one", "two" , "three"]
+    var pickerData:[Any] = ["piano"]// = ["piano"]//["one", "two" , "three"]
     
 //    lazy private var imageView: UIImageView? = {
 //        return UIImageView.init(image: self.dataModel.getImageWithName(displayImageName))
@@ -32,6 +34,9 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        audio.startProcessingAudioForPlayback()
+        audio.play()
 
         self.instrumentPicker.delegate = self
         self.instrumentPicker.dataSource = self
@@ -40,6 +45,7 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
         if pickerData.count == 0 {
             pickerData.append("Not Sure, or N/A")
         }
+        
         self.image.image = self.dataModel.getImageWithName(pickerData[0] as! String)
     }
     
@@ -71,6 +77,8 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
     }
     
     @IBAction func dismissView(_ sender: Any) {
+        audio.endAudioProcessing()
         dismiss(animated: true, completion: nil)
+        
     }
 }

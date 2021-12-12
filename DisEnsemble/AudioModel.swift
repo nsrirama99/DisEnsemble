@@ -46,6 +46,11 @@ class AudioModel {
         }
     }
     
+    func startProcessingAudioForPlayback(withFreq:Float=330.0) {
+        sineFrequency = withFreq
+        self.audioManager?.setOutputBlockToPlaySineWave(sineFrequency)
+    }
+    
     
     // You must call this when you want the audio to start being handled by our model
     func play(){
@@ -70,6 +75,22 @@ class AudioModel {
         return CircularBuffer.init(numChannels: Int64(self.audioManager!.numInputChannels),
                                    andBufferSize: Int64(BUFFER_SIZE))
     }()
+    
+    private lazy var outputBuffer:CircularBuffer? = {
+        return CircularBuffer.init(numChannels: Int64(self.audioManager!.numOutputChannels),
+                                   andBufferSize: Int64(BUFFER_SIZE))
+    }()
+    
+    var sineFrequency:Float = 15000.0 { // frequency in Hz (changeable by user)
+        didSet{
+            // if using swift for generating the sine wave: when changed, we need to update our increment
+            //phaseIncrement = Float(2*Double.pi*sineFrequency/audioManager!.samplingRate)
+            
+            // if using objective c: this changes the frequency in the novocain block
+            self.audioManager?.sineFrequency = sineFrequency
+        }
+    }
+
     
     
     //==========================================
