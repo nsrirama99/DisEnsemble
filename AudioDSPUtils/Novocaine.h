@@ -107,6 +107,7 @@ typedef void (^InputBlock)(float *data, UInt32 numFrames, UInt32 numChannels);
 - (void)teardownAudio;
 - (void)ifAudioInputIsAvailableThenSetupAudioSession;
 - (void)setOutputBlockToPlaySineWave:(float)frequency;
+- (void)setOutputBlockToPlayAudio:(float [])fftData;
 
 - (void)checkSessionProperties;
 - (void)checkAudioSource;

@@ -210,6 +210,35 @@ static pthread_mutex_t outputAudioFileLock;
      }];
 }
 
+-(void)setOutputBlockToPlayAudio:(float [])fftData{
+    //self.sineFrequency = frequency;
+    __block float phase = 0.0;
+    //double sineWaveRepeatMax = 2*M_PI;
+
+    __block Novocaine * __weak  weakSelf = self;
+    [self setOutputBlock:^(float *data, UInt32 numFrames, UInt32 numChannels)
+     {
+        if(numChannels == 1){
+            for (int i=0; i < numFrames; ++i)
+            {
+                data[i] = fftData[i];
+                
+//                phase += weakSelf.phaseIncrement;
+//                if (phase >= sineWaveRepeatMax) phase -= sineWaveRepeatMax;
+            }
+        }else if(numChannels==2){
+            for (int i=0; i < numFrames*numChannels; i+=2)
+            {
+                data[i] = fftData[i];
+                data[i+1] = data[i];
+                
+//                phase += weakSelf.phaseIncrement;
+//                if (phase >= sineWaveRepeatMax) phase -= sineWaveRepeatMax;
+            }
+        }
+     }];
+}
+
 
 #pragma mark - Audio Methods
 

@@ -48,7 +48,7 @@ class AudioModel {
     
     func startProcessingAudioForPlayback(withFreq:Float=330.0) {
         sineFrequency = withFreq
-        self.audioManager?.setOutputBlockToPlaySineWave(sineFrequency)
+        self.audioManager?.setOutputBlockToPlayAudio(sineFrequency)
     }
     
     
