@@ -37,6 +37,9 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
         self.instrumentPicker.dataSource = self
         
         instrumentPicker.selectRow(row, inComponent: 0, animated: false)
+        if pickerData.count == 0 {
+            pickerData.append("Not Sure, or N/A")
+        }
         self.image.image = self.dataModel.getImageWithName(pickerData[0] as! String)
     }
     
@@ -60,6 +63,9 @@ class ResultsViewController: UIViewController,UIScrollViewDelegate, UIPickerView
         //print(pickerData[0])
         if let name = pickerData[row] as? String {
             image.image = self.dataModel.getImageWithName(name)
+            if name == "Not sure, or N/A" {
+                image.image = self.dataModel.getImageWithName("questionmark")
+            }
             //imageView?.image? = self.dataModel.getImageWithName(name)
         }
     }

@@ -11,6 +11,7 @@ import CoreML
 protocol ModalDelegate {
     //function to display audio playback and start disensembling
     func startDisensemble()
+    func processAudio()
 }
 
 class ViewController: UIViewController, ModalDelegate {
@@ -18,24 +19,24 @@ class ViewController: UIViewController, ModalDelegate {
     //AudioModel used to capture microphone data, with a buffer size appropriate for lower sampling rate phones
     //buffer size set to 10 * the lower sampling rate phones
     var bufferSize = 441000
-    
     let audio = AudioModel(buffer_size: 441000)
-    
     //Local variables to store raw data and fft data for passing to model
     var fftData:[Float] = Array.init(repeating: 0.0, count: 441000/2)
     var timeData:[Float] = Array.init(repeating: 0.0, count: 441000)
 
     @IBOutlet weak var recordButton: UIButton!
     var recordFlag = false
+    var runAudioFlag = true
     
     lazy var dataModel = {
         return DataModel.sharedInstance()
     }()
     
     lazy var instruments = dataModel.getAllInstruments()
+    var results:[Any] = []
     
     //Pre-made models for instrument sound classification
-//    lazy var turiModel:PianoModel = {
+//    lazy var pianoModel:PianoModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try PianoModel(configuration: config)
@@ -45,7 +46,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:SingingModel = {
+//    lazy var singingModel:SingingModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try SingingModel(configuration: config)
@@ -55,7 +56,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:GuitarModel = {
+//    lazy var guitarModel:GuitarModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try GuitarModel(configuration: config)
@@ -65,7 +66,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:ViolinModel = {
+//    lazy var violinModel:ViolinModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try ViolinModel(configuration: config)
@@ -75,7 +76,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:CelloModel = {
+//    lazy var celloModel:CelloModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try CelloModel(configuration: config)
@@ -85,7 +86,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:SaxophoneModel = {
+//    lazy var saxModel:SaxophoneModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try SaxophoneModel(configuration: config)
@@ -95,7 +96,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:FluteModel = {
+//    lazy var fluteModel:FluteModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try FluteModel(configuration: config)
@@ -105,7 +106,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:ClarinetModel = {
+//    lazy var clarinetModel:ClarinetModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try ClarinetModel(configuration: config)
@@ -115,7 +116,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:TrumpetModel = {
+//    lazy var trumpetModel:TrumpetModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try TrumpetModel(configuration: config)
@@ -125,7 +126,7 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var turiModel:DrumsModel = {
+//    lazy var drumModel:DrumsModel = {
 //        do{
 //            let config = MLModelConfiguration()
 //            return try DrumsModel(configuration: config)
@@ -158,23 +159,29 @@ class ViewController: UIViewController, ModalDelegate {
         })
         
         if(!recordFlag) {
+            runAudioFlag = true
             recordButton.setTitle("Stop Recording", for: .normal)
             //if not currently recording, record audio and set up auto-cutoff at 10 seconds
             audio.startMicrophoneProcessing(withFps: 10)
             audio.play()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10000), execute: {
-                self.fftData = self.audio.fftData
-                self.timeData = self.audio.timeData
-                
-                self.audio.endAudioProcessing()
-                
-                //process audio with models here
-                self.processAudio()
+                if self.runAudioFlag {
+                    self.fftData = self.audio.fftData
+                    self.timeData = self.audio.timeData
+                    
+                    self.audio.endAudioProcessing()
+                    
+                    self.recordFlag = false
+                    self.recordButton.setTitle("Record Audio!", for: .normal)
+                    self.modalView()
+                    
+                }
             })
             
             recordFlag.toggle()
         } else {
+            runAudioFlag = false
             recordButton.setTitle("Record Audio!", for: .normal)
             self.fftData = self.audio.fftData
             self.timeData = self.audio.timeData
@@ -182,17 +189,19 @@ class ViewController: UIViewController, ModalDelegate {
             self.audio.endAudioProcessing()
             recordFlag.toggle()
             
-            //process audio with models here
-            self.processAudio()
+            modalView()
         }
     }
     
     func processAudio() {
-        //TODO: run through models
-        
-        let resultsController = storyboard?.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
-        resultsController.pickerData = instruments
-        self.present(resultsController, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250), execute: {
+            //TODO: test with imported models when they exist
+            self.startDisensemble()
+            
+            let resultsController = self.storyboard?.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+            resultsController.pickerData = self.results
+            self.present(resultsController, animated: true, completion: nil)
+        })
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -200,22 +209,136 @@ class ViewController: UIViewController, ModalDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let vc = segue.destination as? ResultsViewController {
-            vc.pickerData = instruments
+            vc.pickerData = results
         }
     }
     
-    @IBAction func modalView(_ sender: AnyObject) {
+    func modalView() {
         let viewControllerModal = storyboard?.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
-        
+
         viewControllerModal.delegate = self
         viewControllerModal.timeData = self.timeData
         viewControllerModal.fftData = self.fftData
-        
+
         self.present(viewControllerModal,animated: true, completion: nil)
     }
+//    @IBAction func modalView(_ sender: AnyObject) {
+//        let viewControllerModal = storyboard?.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+//
+//        viewControllerModal.delegate = self
+//        viewControllerModal.timeData = self.timeData
+//        viewControllerModal.fftData = self.fftData
+//
+//        self.present(viewControllerModal,animated: true, completion: nil)
+//    }
     
     func startDisensemble() {
         print("started")
+        //clear out previous results before doing new prediction
+        self.results.removeAll()
+        
+        let doubleArray:[Double] = self.fftData.map{Double($0)}
+        let seq = self.toMLMultiArray(doubleArray)
+        var iter = 0
+        //TODO: uncomment once models have been imported
+//        guard let outputTuri = try? self.pianoModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.singingModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.guitarModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.saxModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.fluteModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.clarinetModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.drumModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.violinModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.celloModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+//
+//        guard let outputTuri = try? self.trumpetModel.prediction(sequence: seq) else {
+//            fatalError("Unexpected runtime error.")
+//        }
+//        if outputTuri.target == 1 {
+//            self.results.append(instruments[iter])
+//        }
+//        iter+=1
+
+
+    }
+    
+    
+    // convert to ML Multi array
+    // https://github.com/akimach/GestureAI-CoreML-iOS/blob/master/GestureAI/GestureViewController.swift
+    // adapted from link above to work for our dataset
+    // It should use floats instead of doubles, but floats aren't supported on the iOS versions developers had access to
+    private func toMLMultiArray(_ arr: [Double]) -> MLMultiArray {
+        let arraySize = bufferSize/2
+        guard let sequence = try? MLMultiArray(shape:[NSNumber(value: arraySize)], dataType:MLMultiArrayDataType.double) else {
+            fatalError("Unexpected runtime error. MLMultiArray could not be created")
+        }
+        let size = Int(truncating: sequence.shape[0])
+        for i in 0..<size {
+            sequence[i] = NSNumber(floatLiteral: arr[i])
+        }
+        return sequence
     }
 }
 

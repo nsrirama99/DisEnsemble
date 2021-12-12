@@ -23,7 +23,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Record Audio!"/>
                                 <connections>
-                                    <action selector="modalView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TIL-U2-Pux"/>
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ecw-7m-Jgh"/>
                                 </connections>
                             </button>
@@ -104,21 +103,30 @@
                                     <action selector="replayAudio:" destination="mQJ-st-r2d" eventType="touchUpInside" id="7Ou-ex-Q7d"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5To-ZW-kFs">
-                                <rect key="frame" x="161" y="635" width="94" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Send data "/>
-                                <connections>
-                                    <action selector="sendData:" destination="mQJ-st-r2d" eventType="touchUpInside" id="sSe-lQ-rXY"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLz-mK-q3w">
                                 <rect key="frame" x="20" y="132" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXs-ee-18I">
+                                <rect key="frame" x="8" y="44" width="93" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Re-Record"/>
+                                <connections>
+                                    <action selector="cancelAudio:" destination="mQJ-st-r2d" eventType="touchUpInside" id="ix3-uW-70f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5To-ZW-kFs">
+                                <rect key="frame" x="298" y="44" width="98" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Send Audio"/>
+                                <connections>
+                                    <action selector="sendData:" destination="mQJ-st-r2d" eventType="touchUpInside" id="sSe-lQ-rXY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kuH-QW-Bhw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
