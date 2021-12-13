@@ -36,16 +36,16 @@ class ViewController: UIViewController, ModalDelegate {
     var results:[Any] = []
     
     //Pre-made models for instrument sound classification
-//    lazy var pianoModel:PianoModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try PianoModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
+    lazy var pianoModel:piano_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try piano_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
     lazy var singingModel:singing_classifier = {
         do{
             let config = MLModelConfiguration()
@@ -55,86 +55,96 @@ class ViewController: UIViewController, ModalDelegate {
             fatalError("Could not load custom model")
         }
     }()
-//
-//    lazy var guitarModel:GuitarModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try GuitarModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var violinModel:ViolinModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try ViolinModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var celloModel:CelloModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try CelloModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var saxModel:SaxophoneModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try SaxophoneModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var fluteModel:FluteModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try FluteModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var clarinetModel:ClarinetModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try ClarinetModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var trumpetModel:TrumpetModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try TrumpetModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
-//
-//    lazy var drumModel:DrumsModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try DrumsModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
+
+    lazy var aGuitarModel:acousticguitar_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try acousticguitar_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+    
+    lazy var eGuitarModel:electricguitar_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try electricguitar_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var violinModel:violin_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try violin_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var celloModel:cello_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try cello_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var saxModel:saxophone_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try saxophone_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var fluteModel:flute_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try flute_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var clarinetModel:clarinet_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try clarinet_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var trumpetModel:trumpet_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try trumpet_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
+
+    lazy var drumModel:drums_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try drums_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,90 +247,77 @@ class ViewController: UIViewController, ModalDelegate {
         //clear out previous results before doing new prediction
         self.results.removeAll()
         
-        let doubleArray:[Double] = self.timeData.map{Double($0)}
-        let seq = self.toMLMultiArray(doubleArray)
-        var iter = 0
-        //TODO: uncomment once models have been imported
-//        guard let outputTuri = try? self.pianoModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-        guard let outputTuri = try? self.singingModel.prediction(audio: seq) else {
-            fatalError("Unexpected runtime error.")
+        var downsampled:[Float] = []
+        for index in stride(from: 0, to: self.timeData.count, by: 3) {
+            downsampled.append(self.timeData[index])
         }
-        if outputTuri.path == 1 {
-            self.results.append(instruments[iter])
+        var chunks:[MLMultiArray] = []
+        for start in stride(from: 0, to: 156000, by: 15600) {
+            let end = start + 15600
+            chunks.append(try! MLMultiArray(downsampled[start..<end]))
         }
-        iter+=1
-//
-//        guard let outputTuri = try? self.guitarModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.saxModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.fluteModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.clarinetModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.drumModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.violinModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.celloModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
-//
-//        guard let outputTuri = try? self.trumpetModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
+        
+        var predictions = [String: Int]()
+        for instrument in instruments {
+            predictions[instrument] = 0
+        }
+        
+        for chunk in chunks {
+            guard let pianoOutput = try? self.pianoModel.prediction(deep_features: chunk) else {
+                fatalError("Error calling predict.")
+            }
+            predictions["piano"]! += Int(pianoOutput.target)
+            
+            guard let singingOutput = try? self.singingModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["singing"]! += Int(singingOutput.target)
 
+            guard let aGuitarOutput = try? self.aGuitarModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["guitar"]! += Int(aGuitarOutput.target)
+            
+            guard let eGuitarOutput = try? self.eGuitarModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["guitar"]! += Int(eGuitarOutput.target)
+
+            guard let saxophoneOutput = try? self.saxModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["saxophone"]! += Int(saxophoneOutput.target)
+
+            guard let fluteOutput = try? self.fluteModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["flute"]! += Int(fluteOutput.target)
+
+            guard let clarinetOutput = try? self.clarinetModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["clarinet"]! += Int(clarinetOutput.target)
+
+            guard let drumOutput = try? self.drumModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["drums"]! += Int(drumOutput.target)
+
+            guard let violinOutput = try? self.violinModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["violin"]! += Int(violinOutput.target)
+
+            guard let celloOutput = try? self.celloModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["cello"]! += Int(celloOutput.target)
+
+            guard let trumpetOutput = try? self.trumpetModel.prediction(deep_features: chunk) else {
+                fatalError("Unexpected runtime error.")
+            }
+            predictions["trumpet"]! += Int(trumpetOutput.target)
+        }
 
     }
     
