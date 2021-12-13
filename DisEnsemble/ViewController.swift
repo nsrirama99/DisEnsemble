@@ -319,6 +319,7 @@ class ViewController: UIViewController, ModalDelegate {
             predictions["trumpet"]! += Int(trumpetOutput.target)
         }
         
+        print(predictions)
         for instrument in instruments {
             if predictions[instrument as! String] ?? 0 > 0 {
                 results.append(instrument)

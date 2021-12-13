@@ -188,6 +188,7 @@
                     </view>
                     <connections>
                         <outlet property="popUp" destination="hJi-p2-dtc" id="9F9-ym-a0A"/>
+                        <outlet property="replayButton" destination="l6A-Xe-EhZ" id="V6H-aV-hT2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfV-Cc-w7p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

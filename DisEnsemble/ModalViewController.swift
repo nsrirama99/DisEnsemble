@@ -20,13 +20,16 @@ class ModalViewController: UIViewController {
     var bufferSize = 441000
     let audio = AudioModel(buffer_size: 441000)
     
+    var playAudioFlag:Bool = true
     
     
+    @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var popUp: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playAudioFlag = true
         // Do any additional setup after loading the view.
         
     }
@@ -38,6 +41,7 @@ class ModalViewController: UIViewController {
     
     @IBAction func cancelAudio(_ sender: Any) {
         audio.endAudioProcessing()
+        audio.endPlayback()
         dismiss(animated: true, completion: nil)
     }
     
@@ -53,15 +57,27 @@ class ModalViewController: UIViewController {
         //print(fftData[fftData.count-100..<fftData.count])
         
         //audio.startProcessingSinewaveForPlayback()
+
+        playAudioFlag.toggle()
         
-        popUp.text = "Playing back audio..."
-        self.audio.playBuffer(arr: timeData)
+        if !playAudioFlag {
+            DispatchQueue.main.async {
+                self.popUp.text = "Playing back audio..."
+                self.replayButton.setTitle("Stop Playback", for: .normal)
+            }
+            self.audio.playBuffer(arr: timeData)
+        } else {
+            DispatchQueue.main.async {
+                self.popUp.text = ""
+                self.replayButton.setTitle("Replay Captured Audio", for: .normal)
+            }
+            self.audio.endPlayback()
+        }
+
 //        audio.startProcessingAudioForPlayback(audio: self.timeData)
 //        audio.play()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10000), execute: {
-            self.popUp.text = ""
-        })
+
         
         
     }

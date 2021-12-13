@@ -62,12 +62,12 @@ class AudioModel {
                 print(error)
             }
             
-            if(!avAudioPlayer.isPlaying){
-                avAudioPlayer.play()
-            }else{
-                avAudioPlayer.pause()
-            }
+            avAudioPlayer.play()
         }
+    }
+    
+    func endPlayback() {
+        avAudioPlayer.stop()
     }
 
     func float32to16(_ input: UnsafeMutablePointer<Float>, count: Int) -> [Float16] {
