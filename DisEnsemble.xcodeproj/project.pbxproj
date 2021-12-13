@@ -11,6 +11,16 @@
 		1E180C6C2764367500642045 /* Names.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E180C6B2764367500642045 /* Names.plist */; };
 		2E1E2E9E27670B2700C582F7 /* singing_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2E9D27670B2700C582F7 /* singing_classifier.mlmodel */; };
 		2E1E2EA9276711C600C582F7 /* AudioPreprocessing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EA8276711C600C582F7 /* AudioPreprocessing.mm */; };
+		2E1E2EB527672C9800C582F7 /* electricguitar_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EAB27672C9600C582F7 /* electricguitar_classifier.mlmodel */; };
+		2E1E2EB627672C9800C582F7 /* saxophone_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EAC27672C9600C582F7 /* saxophone_classifier.mlmodel */; };
+		2E1E2EB727672C9800C582F7 /* trumpet_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EAD27672C9700C582F7 /* trumpet_classifier.mlmodel */; };
+		2E1E2EB827672C9800C582F7 /* clarinet_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EAE27672C9700C582F7 /* clarinet_classifier.mlmodel */; };
+		2E1E2EB927672C9800C582F7 /* violin_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EAF27672C9700C582F7 /* violin_classifier.mlmodel */; };
+		2E1E2EBA27672C9800C582F7 /* acousticguitar_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EB027672C9700C582F7 /* acousticguitar_classifier.mlmodel */; };
+		2E1E2EBB27672C9800C582F7 /* flute_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EB127672C9700C582F7 /* flute_classifier.mlmodel */; };
+		2E1E2EBC27672C9800C582F7 /* piano_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EB227672C9700C582F7 /* piano_classifier.mlmodel */; };
+		2E1E2EBD27672C9800C582F7 /* drums_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EB327672C9700C582F7 /* drums_classifier.mlmodel */; };
+		2E1E2EBE27672C9800C582F7 /* cello_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EB427672C9800C582F7 /* cello_classifier.mlmodel */; };
 		2E704F432761865200F313FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F422761865200F313FB /* AppDelegate.swift */; };
 		2E704F452761865200F313FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F442761865200F313FB /* SceneDelegate.swift */; };
 		2E704F472761865200F313FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F462761865200F313FB /* ViewController.swift */; };
@@ -53,6 +63,16 @@
 		2E1E2E9D27670B2700C582F7 /* singing_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = singing_classifier.mlmodel; path = "turi-create models/singing_classifier.mlmodel"; sourceTree = "<group>"; };
 		2E1E2EA8276711C600C582F7 /* AudioPreprocessing.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioPreprocessing.mm; sourceTree = "<group>"; };
 		2E1E2EAA2767122100C582F7 /* AudioPreprocessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPreprocessing.h; sourceTree = "<group>"; };
+		2E1E2EAB27672C9600C582F7 /* electricguitar_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = electricguitar_classifier.mlmodel; path = "turi-create models/electricguitar_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EAC27672C9600C582F7 /* saxophone_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = saxophone_classifier.mlmodel; path = "turi-create models/saxophone_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EAD27672C9700C582F7 /* trumpet_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = trumpet_classifier.mlmodel; path = "turi-create models/trumpet_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EAE27672C9700C582F7 /* clarinet_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = clarinet_classifier.mlmodel; path = "turi-create models/clarinet_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EAF27672C9700C582F7 /* violin_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = violin_classifier.mlmodel; path = "turi-create models/violin_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EB027672C9700C582F7 /* acousticguitar_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = acousticguitar_classifier.mlmodel; path = "turi-create models/acousticguitar_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EB127672C9700C582F7 /* flute_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = flute_classifier.mlmodel; path = "turi-create models/flute_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EB227672C9700C582F7 /* piano_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = piano_classifier.mlmodel; path = "turi-create models/piano_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EB327672C9700C582F7 /* drums_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = drums_classifier.mlmodel; path = "turi-create models/drums_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EB427672C9800C582F7 /* cello_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = cello_classifier.mlmodel; path = "turi-create models/cello_classifier.mlmodel"; sourceTree = "<group>"; };
 		2E704F3F2761865200F313FB /* DisEnsemble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisEnsemble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E704F422761865200F313FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E704F442761865200F313FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +137,16 @@
 			children = (
 				2E1E2EAA2767122100C582F7 /* AudioPreprocessing.h */,
 				2E1E2EA8276711C600C582F7 /* AudioPreprocessing.mm */,
+				2E1E2EB027672C9700C582F7 /* acousticguitar_classifier.mlmodel */,
+				2E1E2EB427672C9800C582F7 /* cello_classifier.mlmodel */,
+				2E1E2EAE27672C9700C582F7 /* clarinet_classifier.mlmodel */,
+				2E1E2EB327672C9700C582F7 /* drums_classifier.mlmodel */,
+				2E1E2EAB27672C9600C582F7 /* electricguitar_classifier.mlmodel */,
+				2E1E2EB127672C9700C582F7 /* flute_classifier.mlmodel */,
+				2E1E2EB227672C9700C582F7 /* piano_classifier.mlmodel */,
+				2E1E2EAC27672C9600C582F7 /* saxophone_classifier.mlmodel */,
+				2E1E2EAD27672C9700C582F7 /* trumpet_classifier.mlmodel */,
+				2E1E2EAF27672C9700C582F7 /* violin_classifier.mlmodel */,
 				2E1E2E9D27670B2700C582F7 /* singing_classifier.mlmodel */,
 				2E704F7F276187F700F313FB /* CircularBuffer.h */,
 				2E704F7C276187F700F313FB /* CircularBuffer.m */,
@@ -315,19 +345,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1E2EBB27672C9800C582F7 /* flute_classifier.mlmodel in Sources */,
+				2E1E2EBA27672C9800C582F7 /* acousticguitar_classifier.mlmodel in Sources */,
+				2E1E2EB927672C9800C582F7 /* violin_classifier.mlmodel in Sources */,
 				2E704F8E2764816400F313FB /* AudioModel.swift in Sources */,
+				2E1E2EBE27672C9800C582F7 /* cello_classifier.mlmodel in Sources */,
+				2E1E2EB627672C9800C582F7 /* saxophone_classifier.mlmodel in Sources */,
+				2E1E2EBD27672C9800C582F7 /* drums_classifier.mlmodel in Sources */,
 				2E704F882761887D00F313FB /* ResultsViewController.swift in Sources */,
 				1E180C69276435EC00642045 /* DataModel.m in Sources */,
 				2E704F85276187F700F313FB /* CircularBuffer.m in Sources */,
 				2E704F84276187F700F313FB /* Novocaine.m in Sources */,
 				2E704F472761865200F313FB /* ViewController.swift in Sources */,
+				2E1E2EB727672C9800C582F7 /* trumpet_classifier.mlmodel in Sources */,
 				2E1E2EA9276711C600C582F7 /* AudioPreprocessing.mm in Sources */,
 				2E704F8A2761889600F313FB /* ModalViewController.swift in Sources */,
 				2E704F432761865200F313FB /* AppDelegate.swift in Sources */,
 				2E704F83276187F700F313FB /* DataBufferBlock.m in Sources */,
+				2E1E2EB527672C9800C582F7 /* electricguitar_classifier.mlmodel in Sources */,
 				2E1E2E9E27670B2700C582F7 /* singing_classifier.mlmodel in Sources */,
 				2E704F452761865200F313FB /* SceneDelegate.swift in Sources */,
 				2E704F86276187F700F313FB /* FFTHelper.m in Sources */,
+				2E1E2EB827672C9800C582F7 /* clarinet_classifier.mlmodel in Sources */,
+				2E1E2EBC27672C9800C582F7 /* piano_classifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

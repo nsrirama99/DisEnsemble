@@ -259,7 +259,7 @@ class ViewController: UIViewController, ModalDelegate {
         
         var predictions = [String: Int]()
         for instrument in instruments {
-            predictions[instrument] = 0
+            predictions[instrument as! String] = 0
         }
         
         for chunk in chunks {
@@ -318,7 +318,12 @@ class ViewController: UIViewController, ModalDelegate {
             }
             predictions["trumpet"]! += Int(trumpetOutput.target)
         }
-
+        
+        for instrument in instruments {
+            if predictions[instrument as! String] ?? 0 > 0 {
+                results.append(instrument)
+            }
+        }
     }
     
     
