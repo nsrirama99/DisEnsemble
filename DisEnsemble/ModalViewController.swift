@@ -28,7 +28,7 @@ class ModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.audio.playBuffer(arr: timeData)
+        
     }
     
 
@@ -55,8 +55,9 @@ class ModalViewController: UIViewController {
         //audio.startProcessingSinewaveForPlayback()
         
         popUp.text = "Playing back audio..."
-        audio.startProcessingAudioForPlayback(audio: self.timeData)
-        audio.play()
+        self.audio.playBuffer(arr: timeData)
+//        audio.startProcessingAudioForPlayback(audio: self.timeData)
+//        audio.play()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10000), execute: {
             self.popUp.text = ""
