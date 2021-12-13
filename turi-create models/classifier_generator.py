@@ -9,7 +9,7 @@ instruments = {
   "cello": "cel",
   "saxophone": "sax",
   "flute": "flu",
-  "clarinet": "clarinet",
+  "clarinet": "cla",
   "trumpet": "tru",
   "drums": "dru"
 }
@@ -22,22 +22,21 @@ def check_for_label(audio_path, label):
 
 # Load training data
 train = tc.load_audio("IRMAS-TrainingData", with_path=True, recursive=True)
+test = tc.load_audio("IRMAS-TestingData", with_path=True, recursive=True)
 
 # Calculate deep features
 train["deep_features"] = tc.sound_classifier.get_deep_features(train["audio"])
+test["deep_features"] = tc.sound_classifier.get_deep_features(test["audio"])
 
 for name, label in instruments.items():
   # Label the training data for target instrument
   train["target"] = ['[' + label + ']' in path for path in train["path"]]
-  print(train)
-
-  # Load and label the testing data
-  # test = tc.load_audio("IRMAS-TestingData", with_path=True)
-  # test["path"] = [check_for_label(path, label) for path in test["path"]]
-  # print(test)
+  test["target"] = [check_for_label(path, label) for path in test["path"]]
+  data = train.append(test)
+  print(data)
 
   # Create and train the model
-  model = tc.sound_classifier.create(train, target="target", feature="deep_features", batch_size=1024, validation_set=None)
+  model = tc.sound_classifier.create(data, target="target", feature="deep_features", batch_size=1024, validation_set=None)
   print(model)
 
   # Evaluate model
