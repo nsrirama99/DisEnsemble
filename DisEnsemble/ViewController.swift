@@ -252,8 +252,8 @@ class ViewController: UIViewController, ModalDelegate {
             downsampled.append(self.timeData[index])
         }
         var chunks:[MLMultiArray] = []
-        for start in stride(from: 0, to: 156000, by: 15600) {
-            let end = start + 15600
+        for end in stride(from: 15600, to: downsampled.count, by: 15600) {
+            let start = end - 15600
             chunks.append(try! MLMultiArray(downsampled[start..<end]))
         }
         
