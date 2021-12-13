@@ -46,15 +46,15 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //    }()
 //
-//    lazy var singingModel:SingingModel = {
-//        do{
-//            let config = MLModelConfiguration()
-//            return try SingingModel(configuration: config)
-//        }catch{
-//            print(error)
-//            fatalError("Could not load custom model")
-//        }
-//    }()
+    lazy var singingModel:singing_classifier = {
+        do{
+            let config = MLModelConfiguration()
+            return try singing_classifier(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load custom model")
+        }
+    }()
 //
 //    lazy var guitarModel:GuitarModel = {
 //        do{
@@ -237,7 +237,7 @@ class ViewController: UIViewController, ModalDelegate {
         //clear out previous results before doing new prediction
         self.results.removeAll()
         
-        let doubleArray:[Double] = self.fftData.map{Double($0)}
+        let doubleArray:[Double] = self.timeData.map{Double($0)}
         let seq = self.toMLMultiArray(doubleArray)
         var iter = 0
         //TODO: uncomment once models have been imported
@@ -249,13 +249,13 @@ class ViewController: UIViewController, ModalDelegate {
 //        }
 //        iter+=1
 //
-//        guard let outputTuri = try? self.singingModel.prediction(sequence: seq) else {
-//            fatalError("Unexpected runtime error.")
-//        }
-//        if outputTuri.target == 1 {
-//            self.results.append(instruments[iter])
-//        }
-//        iter+=1
+        guard let outputTuri = try? self.singingModel.prediction(audio: seq) else {
+            fatalError("Unexpected runtime error.")
+        }
+        if outputTuri.path == 1 {
+            self.results.append(instruments[iter])
+        }
+        iter+=1
 //
 //        guard let outputTuri = try? self.guitarModel.prediction(sequence: seq) else {
 //            fatalError("Unexpected runtime error.")

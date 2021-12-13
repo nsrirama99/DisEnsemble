@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E180C69276435EC00642045 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E180C68276435EC00642045 /* DataModel.m */; };
 		1E180C6C2764367500642045 /* Names.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E180C6B2764367500642045 /* Names.plist */; };
-		2E1E2E98276704D500C582F7 /* libAudioPreprocessing.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 2E1E2E972767039600C582F7 /* libAudioPreprocessing.dylib */; };
+		2E1E2E9E27670B2700C582F7 /* singing_classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2E9D27670B2700C582F7 /* singing_classifier.mlmodel */; };
+		2E1E2EA9276711C600C582F7 /* AudioPreprocessing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E1E2EA8276711C600C582F7 /* AudioPreprocessing.mm */; };
 		2E704F432761865200F313FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F422761865200F313FB /* AppDelegate.swift */; };
 		2E704F452761865200F313FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F442761865200F313FB /* SceneDelegate.swift */; };
 		2E704F472761865200F313FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F462761865200F313FB /* ViewController.swift */; };
@@ -49,7 +50,9 @@
 		1E180C68276435EC00642045 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		1E180C6A276435FA00642045 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		1E180C6B2764367500642045 /* Names.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Names.plist; sourceTree = "<group>"; };
-		2E1E2E972767039600C582F7 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libAudioPreprocessing.dylib; sourceTree = "<group>"; };
+		2E1E2E9D27670B2700C582F7 /* singing_classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = singing_classifier.mlmodel; path = "turi-create models/singing_classifier.mlmodel"; sourceTree = "<group>"; };
+		2E1E2EA8276711C600C582F7 /* AudioPreprocessing.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioPreprocessing.mm; sourceTree = "<group>"; };
+		2E1E2EAA2767122100C582F7 /* AudioPreprocessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPreprocessing.h; sourceTree = "<group>"; };
 		2E704F3F2761865200F313FB /* DisEnsemble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisEnsemble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E704F422761865200F313FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E704F442761865200F313FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +115,9 @@
 		2E704F362761865200F313FB = {
 			isa = PBXGroup;
 			children = (
+				2E1E2EAA2767122100C582F7 /* AudioPreprocessing.h */,
+				2E1E2EA8276711C600C582F7 /* AudioPreprocessing.mm */,
+				2E1E2E9D27670B2700C582F7 /* singing_classifier.mlmodel */,
 				2E704F7F276187F700F313FB /* CircularBuffer.h */,
 				2E704F7C276187F700F313FB /* CircularBuffer.m */,
 				2E704F7B276187F600F313FB /* DataBufferBlock.h */,
@@ -120,7 +126,6 @@
 				2E704F7D276187F700F313FB /* FFTHelper.m */,
 				2E704F77276187F600F313FB /* Novocaine.h */,
 				2E704F7A276187F600F313FB /* Novocaine.m */,
-				2E1E2E972767039600C582F7 /* libAudioPreprocessing.dylib */,
 				2E704F412761865200F313FB /* DisEnsemble */,
 				2E704F582761865800F313FB /* DisEnsembleTests */,
 				2E704F622761865800F313FB /* DisEnsembleUITests */,
@@ -282,7 +287,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E1E2E98276704D500C582F7 /* libAudioPreprocessing.dylib in Resources */,
 				2E704F4F2761865800F313FB /* LaunchScreen.storyboard in Resources */,
 				1E180C6C2764367500642045 /* Names.plist in Resources */,
 				2E704F4C2761865800F313FB /* Assets.xcassets in Resources */,
@@ -317,9 +321,11 @@
 				2E704F85276187F700F313FB /* CircularBuffer.m in Sources */,
 				2E704F84276187F700F313FB /* Novocaine.m in Sources */,
 				2E704F472761865200F313FB /* ViewController.swift in Sources */,
+				2E1E2EA9276711C600C582F7 /* AudioPreprocessing.mm in Sources */,
 				2E704F8A2761889600F313FB /* ModalViewController.swift in Sources */,
 				2E704F432761865200F313FB /* AppDelegate.swift in Sources */,
 				2E704F83276187F700F313FB /* DataBufferBlock.m in Sources */,
+				2E1E2E9E27670B2700C582F7 /* singing_classifier.mlmodel in Sources */,
 				2E704F452761865200F313FB /* SceneDelegate.swift in Sources */,
 				2E704F86276187F700F313FB /* FFTHelper.m in Sources */,
 			);
