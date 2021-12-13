@@ -45,7 +45,13 @@ class AudioModel {
     
     func playBuffer(arr: [Float]) {
         if let manager = self.audioManager {
-            let buff = Data.init(fromArray: arr)
+            let pointerToFloats = UnsafeMutablePointer<Float>.allocate(capacity: arr.count)
+
+            // Copying our data into the freshly allocated memory
+            pointerToFloats.assign(from: arr, count: arr.count)
+            
+            let tempBuff = float32to16(pointerToFloats, count: arr.count)
+            let buff = Data.init(fromArray: tempBuff)
             let realBuffer = manager.setOutputBlockToPlayBuffer(buff)
             
             do {
@@ -64,6 +70,20 @@ class AudioModel {
         }
     }
 
+    func float32to16(_ input: UnsafeMutablePointer<Float>, count: Int) -> [Float16] {
+      var output = [Float16](repeating: 0, count: count)
+      float32to16(input: input, output: &output, count: count)
+      return output
+    }
+    
+    public func float32to16(input: UnsafeMutablePointer<Float>, output: UnsafeMutableRawPointer, count: Int) {
+      var bufferFloat32 = vImage_Buffer(data: input, height: 1, width: UInt(count), rowBytes: count * 4)
+      var bufferFloat16 = vImage_Buffer(data: output, height: 1, width: UInt(count), rowBytes: count * 2)
+
+      if vImageConvert_PlanarFtoPlanar16F(&bufferFloat32, &bufferFloat16, 0) != kvImageNoError {
+        print("Error converting float32 to float16")
+      }
+    }
     
     // public function for starting processing of microphone data
     func startMicrophoneProcessing(withFps:Double){
