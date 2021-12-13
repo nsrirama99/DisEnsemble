@@ -7,6 +7,20 @@
 //
 import Foundation
 import Accelerate
+import AVFoundation
+
+extension Data {
+
+    init<T>(fromArray values: [T]) {
+        self = values.withUnsafeBytes { Data($0) }
+    }
+
+    func toArray<T>(type: T.Type) -> [T] where T: ExpressibleByIntegerLiteral {
+        var array = Array<T>(repeating: 0, count: self.count/MemoryLayout<T>.stride)
+        _ = array.withUnsafeMutableBytes { copyBytes(to: $0) }
+        return array
+    }
+}
 
 class AudioModel {
     
@@ -18,6 +32,8 @@ class AudioModel {
     var fftData:[Float]
     var timer:Timer
     
+    var avAudioPlayer = AVAudioPlayer()
+    
     // MARK: Public Methods
     init(buffer_size:Int) {
         BUFFER_SIZE = buffer_size
@@ -26,6 +42,28 @@ class AudioModel {
         fftData = Array.init(repeating: 0.0, count: BUFFER_SIZE/2)
         timer = Timer()
     }
+    
+    func playBuffer(arr: [Float]) {
+        if let manager = self.audioManager {
+            let buff = Data.init(fromArray: arr)
+            let realBuffer = manager.setOutputBlockToPlayBuffer(buff)
+            
+            do {
+                avAudioPlayer = try AVAudioPlayer(data: realBuffer! as Data)
+                avAudioPlayer.prepareToPlay()
+            } catch {
+                print("error occured")
+                print(error)
+            }
+            
+            if(!avAudioPlayer.isPlaying){
+                avAudioPlayer.play()
+            }else{
+                avAudioPlayer.pause()
+            }
+        }
+    }
+
     
     // public function for starting processing of microphone data
     func startMicrophoneProcessing(withFps:Double){

@@ -108,6 +108,7 @@ typedef void (^InputBlock)(float *data, UInt32 numFrames, UInt32 numChannels);
 - (void)ifAudioInputIsAvailableThenSetupAudioSession;
 - (void)setOutputBlockToPlaySineWave:(float)frequency;
 - (void)setOutputBlockToPlayAudio:(float [])rawData;
+- (NSMutableData *)setOutputBlockToPlayBuffer:(NSData*)rawData;
 
 - (void)checkSessionProperties;
 - (void)checkAudioSource;

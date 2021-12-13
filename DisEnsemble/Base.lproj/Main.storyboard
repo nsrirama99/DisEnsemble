@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-wC-MF0">
-                                <rect key="frame" x="127" y="382" width="160" height="132"/>
+                                <rect key="frame" x="127" y="429" width="160" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Record Audio!">
                                     <backgroundConfiguration key="background"/>
@@ -56,7 +56,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vug-wC-MF0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="338" id="22a-8T-cp3"/>
                             <constraint firstItem="xPo-SG-hxR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="129" id="A8Y-OO-z0q"/>
                             <constraint firstItem="xPo-SG-hxR" firstAttribute="centerX" secondItem="Vug-wC-MF0" secondAttribute="centerX" id="Rfi-hJ-iT2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xPo-SG-hxR" secondAttribute="bottom" constant="120" id="aWW-bJ-Ffv"/>
