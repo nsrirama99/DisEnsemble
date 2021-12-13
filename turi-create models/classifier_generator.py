@@ -9,7 +9,7 @@ instruments = {
   "cello": "cel",
   "saxophone": "sax",
   "flute": "flu",
-  "clarinet": "cla",
+  "clarinet": "clarinet",
   "trumpet": "tru",
   "drums": "dru"
 }
