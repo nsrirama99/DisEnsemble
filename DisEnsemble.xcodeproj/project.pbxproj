@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E180C69276435EC00642045 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E180C68276435EC00642045 /* DataModel.m */; };
 		1E180C6C2764367500642045 /* Names.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E180C6B2764367500642045 /* Names.plist */; };
+		2E1E2E98276704D500C582F7 /* libAudioPreprocessing.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 2E1E2E972767039600C582F7 /* libAudioPreprocessing.dylib */; };
 		2E704F432761865200F313FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F422761865200F313FB /* AppDelegate.swift */; };
 		2E704F452761865200F313FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F442761865200F313FB /* SceneDelegate.swift */; };
 		2E704F472761865200F313FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E704F462761865200F313FB /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		1E180C68276435EC00642045 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		1E180C6A276435FA00642045 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		1E180C6B2764367500642045 /* Names.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Names.plist; sourceTree = "<group>"; };
+		2E1E2E972767039600C582F7 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libAudioPreprocessing.dylib; sourceTree = "<group>"; };
 		2E704F3F2761865200F313FB /* DisEnsemble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisEnsemble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E704F422761865200F313FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E704F442761865200F313FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E1E2E992767052000C582F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2E704F362761865200F313FB = {
 			isa = PBXGroup;
 			children = (
@@ -111,11 +120,13 @@
 				2E704F7D276187F700F313FB /* FFTHelper.m */,
 				2E704F77276187F600F313FB /* Novocaine.h */,
 				2E704F7A276187F600F313FB /* Novocaine.m */,
+				2E1E2E972767039600C582F7 /* libAudioPreprocessing.dylib */,
 				2E704F412761865200F313FB /* DisEnsemble */,
 				2E704F582761865800F313FB /* DisEnsembleTests */,
 				2E704F622761865800F313FB /* DisEnsembleUITests */,
 				2E704F402761865200F313FB /* Products */,
 				2E704F72276187F500F313FB /* DisEnsemble-Bridging-Header.h */,
+				2E1E2E992767052000C582F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1E2E98276704D500C582F7 /* libAudioPreprocessing.dylib in Resources */,
 				2E704F4F2761865800F313FB /* LaunchScreen.storyboard in Resources */,
 				1E180C6C2764367500642045 /* Names.plist in Resources */,
 				2E704F4C2761865800F313FB /* Assets.xcassets in Resources */,
@@ -489,7 +501,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PH8Q4RRFW;
+				DEVELOPMENT_TEAM = F69WJ27LN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DisEnsemble/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -501,6 +513,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.DisEnsemble;
@@ -521,7 +537,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PH8Q4RRFW;
+				DEVELOPMENT_TEAM = F69WJ27LN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DisEnsemble/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -533,6 +549,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.DisEnsemble;
