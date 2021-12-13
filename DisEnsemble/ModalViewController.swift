@@ -20,7 +20,10 @@ class ModalViewController: UIViewController {
     var bufferSize = 441000
     let audio = AudioModel(buffer_size: 441000)
     
-    @IBOutlet weak var popUpText: UITextField!
+    
+    
+    @IBOutlet weak var popUp: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,17 +53,23 @@ class ModalViewController: UIViewController {
         
         //audio.startProcessingSinewaveForPlayback()
         
-        
+        popUp.text = "Playing back audio..."
         audio.startProcessingAudioForPlayback(audio: self.timeData)
         audio.play()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10000), execute: {
+            self.popUp.text = ""
+        })
+        
+        
     }
     
     @IBAction func sendData(_ sender: Any) {
-        popUpText.resignFirstResponder()
+        popUp.resignFirstResponder()
         let data = true
         
         if(data == true){
-            popUpText.text = "Data Recieved and Processed. Swipe down to return to menu."
+            popUp.text = "Data Recieved and Processed. Swipe down to return to menu."
         }
         
         if let delegate = delegate {
@@ -70,6 +79,5 @@ class ModalViewController: UIViewController {
         audio.endAudioProcessing()
         dismiss(animated: true, completion: nil)
     }
-    
 
 }

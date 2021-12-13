@@ -18,11 +18,11 @@ class ViewController: UIViewController, ModalDelegate {
     
     //AudioModel used to capture microphone data, with a buffer size appropriate for lower sampling rate phones
     //buffer size set to 10 * the lower sampling rate phones
-    var bufferSize = 441000
-    let audio = AudioModel(buffer_size: 441000)
+    var bufferSize = 480000
+    let audio = AudioModel(buffer_size: 480000)
     //Local variables to store raw data and fft data for passing to model
-    var fftData:[Float] = Array.init(repeating: 0.0, count: 441000/2)
-    var timeData:[Float] = Array.init(repeating: 0.0, count: 441000)
+    var fftData:[Float] = Array.init(repeating: 0.0, count: 480000/2)
+    var timeData:[Float] = Array.init(repeating: 0.0, count: 480000)
 
     @IBOutlet weak var recordButton: UIButton!
     var recordFlag = false

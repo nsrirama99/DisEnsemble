@@ -93,7 +93,7 @@ class AudioModel {
                                    andBufferSize: Int64(BUFFER_SIZE))
     }()
     
-    var sineFrequency:Float = 15000.0 { // frequency in Hz (changeable by user)
+    var sineFrequency:Float = 13000.0 { // frequency in Hz (changeable by user)
         didSet{
             // if using swift for generating the sine wave: when changed, we need to update our increment
             //phaseIncrement = Float(2*Double.pi*sineFrequency/audioManager!.samplingRate)
